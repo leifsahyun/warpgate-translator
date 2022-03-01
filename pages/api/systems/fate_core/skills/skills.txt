@@ -1,0 +1,79 @@
+Stealth: Great (+4)
+
+Athletics: Good (+3)
+
+Burglary: Good (+3)
+
+Fight: Fair (+2)
+
+Deceive: Fair (+2)
+
+Lore: Fair (+2)
+
+Crafts: Average (+1)
+
+Physique: Average (+1)
+
+Investigate: Average (+1)
+
+Will: Average (+1)
+
+Athletics: Great (+4)
+
+Notice: Good (+3)
+
+Fight: Good (+3)
+
+Deceive: Fair (+2)
+
+Investigate: Fair (+2)
+
+Physique: Fair (+2)
+
+Resources: Average (+1)
+
+Lore: Average (+1)
+
+Burglary: Average (+1)
+
+Empathy: Average (+1)
+
+Fight: Great (+4)
+
+Athletics: Good (+3)
+
+Physique: Good (+3)
+
+Stealth: Fair (+2)
+
+Provoke: Fair (+2)
+
+Rapport: Fair (+2)
+
+Crafts: Average (+1)
+
+Shoot: Average (+1)
+
+Deceive: Average (+1)
+
+Will: Average (+1)
+
+Lore: Great (+4)
+
+Rapport: Good (+3)
+
+Crafts: Good (+3)
+
+Athletics: Fair (+2)
+
+Will: Fair (+2)
+
+Investigate: Fair (+2)
+
+Fight: Average (+1)
+
+Resources: Average (+1)
+
+Contacts: Average (+1)
+
+Notice: Average (+1)

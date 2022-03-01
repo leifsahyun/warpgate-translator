@@ -1,0 +1,14 @@
+{
+	"character": {
+		"name": {},
+		"skills": {
+			"number": 10
+		},
+		"aspects": {
+			"number": 5
+		},
+		"stunts": {
+			"number": 3
+		}
+	}
+}

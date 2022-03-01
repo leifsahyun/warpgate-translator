@@ -1,0 +1,25 @@
+Animal Messenger
+Blindness/Deafness
+Calm Emotions
+Cloud of Daggers
+Crown of Madness
+Detect Thoughts
+Enhance Ability
+Enthrall
+Heat Metal
+Hold Person
+Invisibility
+Knock
+Lesser Restoration
+Locate Animals or Plants
+Locate Object
+Magic Mouth
+Phantasmal Force
+Pyrotechnics
+See Invisibility
+Shatter
+Silence
+Skywrite
+Suggestion
+Warding Wind
+Zone of Truth
