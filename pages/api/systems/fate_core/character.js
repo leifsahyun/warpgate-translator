@@ -48,7 +48,7 @@ function processCharacter(character, power) {
 			skills[match[1]] = parseInt(match[2]);
 	});
 	var skillsByPreference = Object.keys(skills).sort((a,b) => skills[b] - skills[a]);
-	var skillsByLevel = getSkillsByLevel(skills, power);
+	var skillsByLevel = getSkillsByLevel(skillsByPreference, power);
 	var maxSkill = Math.max(...(Object.keys(skillsByLevel).filter(sk => skillsByLevel[sk])));
 	for(var lvl=1; lvl<=maxSkill; lvl++)
 	{
@@ -63,6 +63,36 @@ function processCharacter(character, power) {
 	return {character: character, choices: []};
 }
 
+function getSkillsByLevel(skills, power) {
+	var numSkillsByLevel = {0: 0};
+	var skillsToSlot = skills.length;
+	var totalSkillPoints = 20 + Math.floor(power * 15);
+	var maxSkill = 2 + Math.floor(totalSkillPoints/10);
+	while(skillsToSlot > 0 && totalSkillPoints > 0)
+	{
+		var columnHeight = maxSkill;
+		var skillPointsSpent = 0;
+		for(; columnHeight>0; columnHeight--)
+		{
+			skillPointsSpent = (columnHeight + 1) * (columnHeight/2.0);
+			if(columnHeight > skillsToSlot || skillPointsSpent > totalSkillPoints - (skillsToSlot - columnHeight))
+				continue;
+			else
+				break;
+		}
+		for(var i=columnHeight; i>0; i--)
+		{
+			if(numSkillsByLevel[i])
+				numSkillsByLevel[i]++;
+			else
+				numSkillsByLevel[i] = 1;
+		}
+		skillsToSlot -= columnHeight;
+		totalSkillPoints -= skillPointsSpent;
+	}
+	return numSkillsByLevel;
+}
+/*
 function getSkillsByLevel(skills, power) {
 	var maxSkill = Object.values(skills).sort((a,b)=>b-a)[0];
 	var numSkillsByLevel = {0: 0};
@@ -133,6 +163,7 @@ function getSkillsByLevel(skills, power) {
 	}
 	return numSkillsByLevel;
 }
+*/
 
 const skillRatings = [
 	"Mediocre (+0)",
