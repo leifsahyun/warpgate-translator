@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "fs": "^0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
     "next": "^11.0.0",
     "nvm": "0.0.4",
     "openai": "^2.0.0",
