@@ -2,6 +2,11 @@ import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
 
+const choicesUri = process.env.NEXT_PUBLIC_BASE_PATH+"/api/choices";
+const systemsUri = process.env.NEXT_PUBLIC_BASE_PATH+"/api/systems/";
+const authUri = process.env.NEXT_PUBLIC_BASE_PATH+"/api/auth";
+console.log(choicesUri+" "+systemsUri+" "+authUri);
+
 export default function Home() {
   const [accessCode, setAccessCode] = useState("");
   const [accessToken, setAccessToken] = useState("");
@@ -17,7 +22,7 @@ export default function Home() {
 		setResult("Processing...");
 		event.preventDefault();
 		var inputType = "character"; //fix this later
-		var response = await fetch("/api/systems/"+system+"/character", {
+		var response = await fetch(systemsUri+system+"/character", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -30,7 +35,7 @@ export default function Home() {
 		var choices = data.choices;
 		while (choices && choices.length > 0)
 		{
-			response = await fetch("/api/choices", {
+			response = await fetch(choicesUri, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -43,7 +48,7 @@ export default function Home() {
 				if(!character[attr])
 					character[attr] = data.result[attr];
 			});
-			response = await fetch("/api/systems/"+system+"/character", {
+			response = await fetch(systemsUri+system+"/character", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -133,7 +138,8 @@ export default function Home() {
   
   async function authenticate(event) {
 	  event.preventDefault();
-	  var response = await fetch("/api/auth", {
+	  console.log(process.env.BASE_PATH+"/api/auth");
+	  var response = await fetch(authUri, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
