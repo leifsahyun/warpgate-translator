@@ -1,6 +1,7 @@
 import { Configuration, OpenAIApi } from "openai";
 const fs = require('fs').promises;
 const pluralize = require('pluralize');
+const jwt = require('jsonwebtoken');
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -11,6 +12,8 @@ var inputType = "object";
 var maxAttributeLengths = {};
 
 export default async function (req, res) {
+	var token = req.headers["authorization"].replace("Bearer", "").trim();
+	jwt.verify(token, process.env.WARPGATE_SECRET);
 	system = req.body.system;
 	inputType = req.body.inputType;
 	var createdObject = {};

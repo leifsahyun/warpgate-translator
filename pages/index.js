@@ -17,7 +17,14 @@ export default function Home() {
 		setResult("Processing...");
 		event.preventDefault();
 		var inputType = "character"; //fix this later
-		var response = await fetch("/api/systems/"+system+"/character");
+		var response = await fetch("/api/systems/"+system+"/character", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": "Bearer "+accessToken
+			},
+			body: JSON.stringify({power: power/100.0})
+		});
 		var data = await response.json();
 		var character = data.character;
 		var choices = data.choices;
@@ -27,6 +34,7 @@ export default function Home() {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
+					"Authorization": "Bearer "+accessToken
 				},
 				body: JSON.stringify({ choices: choices, system: system, input: input, inputType: inputType })
 			})
@@ -39,6 +47,7 @@ export default function Home() {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
+					"Authorization": "Bearer "+accessToken
 				},
 				body: JSON.stringify({ character: character, power: power/100.0 })
 			});
@@ -127,7 +136,7 @@ export default function Home() {
 	  var response = await fetch("/api/auth", {
 			method: "POST",
 			headers: {
-				"Content-Type": "application/json",
+				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({ accessCode: accessCode })
 		});

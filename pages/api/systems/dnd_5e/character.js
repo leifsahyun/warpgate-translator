@@ -1,7 +1,10 @@
 const fs = require('fs').promises;
 const pluralize = require('pluralize');
+const jwt = require('jsonwebtoken');
 
 export default async function (req, res) {
+	var token = req.headers["authorization"].replace("Bearer", "").trim();
+	jwt.verify(token, process.env.WARPGATE_SECRET);
 	var response = null;
 	if(req.body && req.body.character)
 	{
