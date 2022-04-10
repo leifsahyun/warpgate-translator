@@ -1,4 +1,4 @@
-# This workflow will build and push a new container image to Amazon ECR, when there is a push to the secured branch.
+# This workflow will build and push a new container image to Amazon ECR, when there is a push to the main branch.
 #
 # To use this workflow, you will need to complete the following set-up steps:
 #
@@ -16,7 +16,7 @@ name: Publish to Amazon ECR
 on:
   push:
     branches:
-      - secured
+      - main
 
 env:
   AWS_REGION: us-east-2                   # set this to your preferred AWS region, e.g. us-west-1
