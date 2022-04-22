@@ -26,7 +26,6 @@ jobs:
         token_format: 'id_token'
         workload_identity_provider: 'projects/maginobi-webapps/locations/global/workloadIdentityPools/maginobi-webapps-github/providers/github'
         service_account: 'github-service-acct@maginobi-webapps.iam.gserviceaccount.com'
-        id_token_audience: 'https://iam.googleapis.com/projects/1078883167077/locations/global/workloadIdentityPools/maginobi-webapps-github/providers/github'
         create_credentials_file: true
     - name: Login with gcloud
       run: |
