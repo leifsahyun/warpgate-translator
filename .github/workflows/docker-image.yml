@@ -9,6 +9,7 @@ on:
 env:
   WORKLOAD_IDENTITY_POOL_PROVIDER: 'projects/1078883167077/locations/global/workloadIdentityPools/maginobi-webapps-github/providers/github'
   SERVICE_ACCOUNT: 'github-service-acct@maginobi-webapps.iam.gserviceaccount.com'
+  IMAGE_NAME: 'us-central1-docker.pkg.dev/maginobi-webapps/warpgate-translator/warpgate-translator'
 
 jobs:
 
@@ -22,7 +23,7 @@ jobs:
 
     steps:
     - name: Set image tag
-      run: echo "IMAGE_TAG=us-central1-docker.pkg.dev/maginobi-webapps/warpgate-translator/warpgate-translator:$(date +%s)" >> $GITHUB_ENV
+      run: echo "IMAGE_TIMESTAMP=$(date +%s)" >> $GITHUB_ENV
     - name: Checkout code
       uses: actions/checkout@v3
     - name: Authenticate to Google
@@ -39,6 +40,6 @@ jobs:
         gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
         gcloud auth configure-docker us-central1-docker.pkg.dev
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ${{ env.IMAGE_TAG }}
+      run: docker build . --file Dockerfile --tag ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TIMESTAMP }} --tag ${{ env.IMAGE_NAME }}:latest
     - name: Push the Docker image
       run: docker push ${{ env.IMAGE_TAG }}
