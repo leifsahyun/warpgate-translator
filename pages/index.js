@@ -81,7 +81,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-	    <div className={styles.leftSide}>
+	    <div>
 			<h3>WaRPGaTe Translator</h3>
 			<form onSubmit={onSubmit}>
 				<div style={{"flexDirection": "row"}}>
